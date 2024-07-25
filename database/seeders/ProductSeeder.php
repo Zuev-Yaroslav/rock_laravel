@@ -14,9 +14,9 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-        $product = Product::factory(100)->create();
+        $product = Product::factory(50)->create();
         $product->each(function (Product $product) {
-            Comment::factory(random_int(1, 20))->create([
+            Comment::factory(random_int(1, 10))->create([
                 'commentable_id' => $product->id,
                 'commentable_type' => Product::class,
             ]);

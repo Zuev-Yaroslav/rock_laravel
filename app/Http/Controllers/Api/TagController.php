@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\Tag\IndexRequest;
 use App\Http\Requests\Api\Tag\StoreRequest;
 use App\Http\Requests\Api\Tag\UpdateRequest;
 use App\Http\Resources\Tag\TagResource;
@@ -12,9 +13,13 @@ use Illuminate\Http\Response;
 
 class TagController extends Controller
 {
-    public function index()
+    public function index(IndexRequest $request)
     {
-        return TagResource::collection(Tag::all())->resolve();
+        $data = $request->validated();
+
+        $tags = Tag::filter($data)->get();
+
+        return TagResource::collection($tags)->resolve();
     }
     public function show(Tag $tag)
     {

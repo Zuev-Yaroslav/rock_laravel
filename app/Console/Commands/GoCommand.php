@@ -33,8 +33,8 @@ class GoCommand extends Command
      */
     public function handle()
     {
+//        $user = User::first();
 //        $post = Post::first();
-//        $profile = Profile::first();
 //        $role = Role::where('name', 'admin')->first();
 //        $category = Category::first();
 //        $comment = $post->comments()->first();
@@ -68,7 +68,10 @@ class GoCommand extends Command
 //        $post->delete();
 //        dd($post->getDirty());
 //        $post->update();
-        StartLogEvent::dispatch();
-        EndLogEvent::dispatch();
+//        StartLogEvent::dispatch();
+//        EndLogEvent::dispatch();
+
+        $profile = Profile::first();
+        dd($profile->role->name);
     }
 }

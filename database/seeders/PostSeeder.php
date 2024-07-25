@@ -16,13 +16,13 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
-        $posts = Post::factory(100)->create();
+        $posts = Post::factory(50)->create();
         $tags = Tag::all();
         $profiles = Profile::all();
         $posts->each(function (Post $post) use ($tags, $profiles) {
 //            $post->likedByProfiles()->attach($profiles->random(rand(1, 51))->pluck('id'));
             $post->tags()->attach($tags->random(10)->pluck('id'));
-            Comment::factory(random_int(1, 50))->create([
+            Comment::factory(random_int(1, 10))->create([
                 'commentable_id' => $post->id,
                 'commentable_type' => Post::class,
             ]);

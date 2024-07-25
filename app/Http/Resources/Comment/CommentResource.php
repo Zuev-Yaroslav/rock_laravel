@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Comment;
 
+use App\Http\Resources\Profile\ProfileResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -17,9 +18,11 @@ class CommentResource extends JsonResource
         return [
             'id' => $this->id,
             'content' => $this->content,
-            'author' => $this->author,
-            'likes' => $this->likes,
-            'created_at' => $this->created_at->toDateTimeString(),
+            'profile' => $this->profile,
+            'commentable_type' => $this->commentable_type,
+            'commentable' => $this->commentable,
+            'likes' => $this->likedByProfiles()->count(),
+            'created_at' => $this->created_at,
         ];
     }
 }

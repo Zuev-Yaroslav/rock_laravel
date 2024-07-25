@@ -28,39 +28,39 @@ trait HasLog
     protected static function bootHasLog() : void
     {
         static::created(function (Model $model) {
-            StartLogEvent::dispatch();
+//            StartLogEvent::dispatch();
             Logger::create([
                 'event_name' => self::getModelName($model) . '_created',
                 'new_values' => json_encode($model)
             ]);
-            EndLogEvent::dispatch();
+//            EndLogEvent::dispatch();
         });
         static::updated(function (Model $model) {
-            StartLogEvent::dispatch();
+//            StartLogEvent::dispatch();
             $oldValues = self::getOldValues($model);
             Logger::create([
                 'event_name' => self::getModelName($model) . '_updated',
                 'new_values' => json_encode($model),
                 'old_values' => json_encode($oldValues)
             ]);
-            EndLogEvent::dispatch();
+//            EndLogEvent::dispatch();
         });
         static::deleted(function (Model $model) {
-            StartLogEvent::dispatch();
+//            StartLogEvent::dispatch();
             Logger::create([
                 'event_name' => self::getModelName($model) . '_deleted',
                 'old_values' => json_encode($model)
             ]);
-            EndLogEvent::dispatch();
+//            EndLogEvent::dispatch();
         });
         static::retrieved(function (Model $model) {
-            StartLogEvent::dispatch();
+//            StartLogEvent::dispatch();
             self::$oldValues = $model->toArray();
             Logger::create([
                 'event_name' => self::getModelName($model) . '_retrieved',
                 'old_values' => json_encode($model)
             ]);
-            EndLogEvent::dispatch();
+//            EndLogEvent::dispatch();
         });
         parent::booted();
     }
