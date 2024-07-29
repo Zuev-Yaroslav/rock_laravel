@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
     use HasFactory;
-    use HasLog;
+//    use HasLog;
     use HasFilter;
     public function user()
     {
@@ -40,8 +40,8 @@ class Profile extends Model
     {
         return $this->hasMany(Post::class);
     }
-    public function role()
+    public function roles()
     {
-        return $this->user->role();
+        return $this->user->roles();
     }
 }

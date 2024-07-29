@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Profile;
 
+use App\Http\Resources\Permission\PermissionResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -16,8 +17,12 @@ class ProfileResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'user' => [
+                'email' => $this->user->email
+            ],
             'gender' => $this->gender,
-            'role' => $this->role,
+            'roles' => $this->roles,
+            'permissions' => PermissionResource::collection($this->user->permissions),
             'birthed_at' => $this->birthed_at,
             'avatar_path' => $this->avatar_path,
             'is_active' => $this->is_active,

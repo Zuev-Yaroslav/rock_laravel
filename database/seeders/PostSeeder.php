@@ -20,7 +20,7 @@ class PostSeeder extends Seeder
         $tags = Tag::all();
         $profiles = Profile::all();
         $posts->each(function (Post $post) use ($tags, $profiles) {
-//            $post->likedByProfiles()->attach($profiles->random(rand(1, 51))->pluck('id'));
+            $post->likedByProfiles()->attach($profiles->random(rand(1, 51))->pluck('id'));
             $post->tags()->attach($tags->random(10)->pluck('id'));
             Comment::factory(random_int(1, 10))->create([
                 'commentable_id' => $post->id,

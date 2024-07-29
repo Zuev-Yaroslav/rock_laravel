@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
-    use HasLog;
+//    use HasLog;
     use HasFilter;
     protected static function booted()
     {
@@ -34,7 +34,7 @@ class Post extends Model
     }
     public function tags()
     {
-        return $this->belongsToMany(Tag::class);
+        return $this->morphToMany(Tag::class, 'taggable');
     }
     public function category()
     {
@@ -47,5 +47,9 @@ class Post extends Model
     public function likedByProfiles()
     {
         return $this->morphToMany(Profile::class, 'likeable');
+    }
+    public function getLikesAttribute() : int
+    {
+        return $this->likedByProfiles()->count();
     }
 }

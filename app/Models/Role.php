@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
 class Role extends Model
 {
     use HasFactory;
-    use HasLog;
+//    use HasLog;
     public function users()
     {
         return $this->hasMany(User::class);

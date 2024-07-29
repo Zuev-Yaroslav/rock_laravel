@@ -4,6 +4,7 @@ namespace App\Http\Filters;
 
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\DB;
 
 class ProfileFilter extends AbstractFilter
 {
@@ -15,7 +16,7 @@ class ProfileFilter extends AbstractFilter
         'second_name',
         'third_name',
         'login',
-        'role_name',
+        'roles',
     ];
     protected function birthedAtFrom(Builder $builder, $value)
     {
@@ -46,8 +47,14 @@ class ProfileFilter extends AbstractFilter
     {
         $builder->where('login' , 'ilike', "%$value%");
     }
-    protected function roleName(Builder $builder, $value)
+    protected function roles(Builder $builder, $values)
     {
-        $builder->whereRelation('role', 'name' , 'ilike', "%$value%");
+        $builder->whereHas('user.roles', function (Builder $b) use ($values) {
+            $b->whereIn('name', $values);
+//            foreach ($values as $value) {
+//                $b->orwhere('roles.name', 'ilike', "%$value%");
+//            }
+        });
+//        dd($builder->toSql());
     }
 }

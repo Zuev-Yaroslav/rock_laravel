@@ -24,7 +24,7 @@ class PostResource extends JsonResource
             'status' => $this->status,
             'profile' => $this->profile,
             'category' => $this->category,
-            'tag' => $this->tag,
+            'likes' => $this->likes,
             'created_at' => $this->created_at->toDateTimeString(),
         ];
     }
