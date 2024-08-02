@@ -30,7 +30,6 @@ class UpdateRequest extends FormRequest
 //            'status' => 'nullable|integer',
 //            'author' => 'nullable|string',
 //            'category' => 'nullable|string',
-//            'tag' => 'nullable|string',
 //            'profile_id' => 'required|integer',
 //            'category_id' => 'required|integer',
         ];
