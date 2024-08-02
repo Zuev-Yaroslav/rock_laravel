@@ -71,7 +71,7 @@ class GoCommand extends Command
 //        StartLogEvent::dispatch();
 //        EndLogEvent::dispatch();
 
-        $profile = Profile::first();
-        dd($profile->role->name);
+        $user = User::first();
+        dd($user->permissions->toArray());
     }
 }

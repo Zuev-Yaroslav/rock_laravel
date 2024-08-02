@@ -17,12 +17,8 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
-//    use HasLog;
+    use HasLog;
     use HasFilter;
-    protected static function booted()
-    {
-
-    }
 
     public function profile()
     {

@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\Post;
 use App\Models\Product;
 use App\Models\Profile;
+use App\Models\Tag;
 use Illuminate\Console\Command;
 
 class TestModelEvents extends Command
@@ -33,15 +34,15 @@ class TestModelEvents extends Command
 //            'profile_id' => 1,
 //            'category_id' => 1,
 //        ]);
-        $post = Post::find(25);
+//        $post = Post::find(25);
 //        dd($post);
-        $post->update(['title' => 'hello world2fwefewfeddddfw88989']);
+//        $post->update(['title' => 'hello 93248932']);
 //        $post->tags()->sync([]);
 //        $post->delete();
 //        $profile = Profile::find(10);
 //        $profile->update(['login' => 'hello3world']);
 //        $product = Product::create(['title'=> 'fwfwfwffwfwf']);
 //        Post::create(['title' => '111', 'profile_id' => 1, 'category_id' => 2, 'content' => '111']);
-
+        Tag::create(['title' => 'tag1']);
     }
 }

@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     use HasFactory;
-//    use HasLog;
+    use HasLog;
     use HasFilter;
     public function commentable()
     {

@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Tag extends Model
 {
     use HasFactory;
-//    use HasLog;
+    use HasLog;
     use HasFilter;
     public function posts()
     {
